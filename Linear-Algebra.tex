@@ -1,0 +1,65 @@
+%!TEX program = xelatex
+\documentclass[]{article}
+\usepackage{amsmath}
+\usepackage[UTF8]{ctex}
+
+% bold style for matrix notation
+\newcommand{\matr}[1]{\mathbf{#1}}  % undergraduate algebra version
+%\newcommand{\matr}[1]{#1}          % pure math version
+%\newcommand{\matr}[1]{\bm{#1}}     % ISO complying version
+
+%opening
+\title{矩阵}
+\author{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+常用线性代数的引理和定理，写着玩
+\end{abstract}
+
+\section{实对称矩阵的特征值是实数}
+\begin{equation}\label{key}
+\begin{aligned}
+Ax &= \lambda x \\
+x^H A^H &= \bar{\lambda} x^H \\
+x^H A^H x &= \bar{\lambda} x^H x \\
+A^H &= A \\
+x^H A x &= \bar{\lambda} x^H x \\
+\lambda x^H x &= \bar{\lambda} x^H x \\
+\lambda &= \bar{\lambda}
+\end{aligned}
+\end{equation}
+
+\section{n阶方阵一定有n个特征根（重跟按重数计算）}
+设A是一个n阶方阵，它的特征值多项式$ \left| A - \lambda I \right| $是一个关于$ \lambda $ 的多项式。根据代数基本定理，它可以唯一的分解成一次因式的乘积。所以$ \left| A - \lambda I \right| $一定有n个复数跟。
+
+\section{n阶实对称矩阵一定有n个实特征跟（重跟按重数计算）}
+由以上两条结论易证。
+
+\section{实对称矩阵，不同特征值的特征向量正交}
+\begin{equation}\label{key}
+\begin{aligned}
+A x_1 &= \lambda_1 x_1\\
+A x_2 &= \lambda_2 x_2\\
+x_1^H A^H &= \lambda_1 x_1^H \\
+x_1^H A^H x_2 &= \lambda_1 x_1^H x_2 \\
+\lambda_2 x_1^H x_2 &= \lambda_1 x_1^H x_2 \\
+(\lambda_1 - \lambda_2) x_1^H x_2 &= 0 \\
+\lambda_1 &\neq \lambda_2 \\
+x_1^H x_2 &= 0
+\end{aligned}
+\end{equation}
+
+\section{设A为n阶对称矩阵，则必有正交矩阵P，使得$ P^{-1}AP = P^TAP = B $, 其中B是以A的特征值为对角线元素的对角矩阵}
+也即对称矩阵与对角矩阵相似。不会证。
+
+\section{实对称矩阵是半正定矩阵的充分必要条件是它的所有特征值都非负}
+由以上结论不难证明。\\
+正定矩阵定义：一个$ n \times n $的实对称矩阵A是正定的，当且仅当对于所有的非零实系数向量x，都有$ x^T A x > 0 $.
+
+
+
+\end{document}
