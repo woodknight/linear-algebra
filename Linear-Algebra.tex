@@ -54,12 +54,91 @@ x_1^H x_2 &= 0
 \end{equation}
 
 \section{设A为n阶对称矩阵，则必有正交矩阵P，使得$ P^{-1}AP = P^TAP = B $, 其中B是以A的特征值为对角线元素的对角矩阵}
-也即对称矩阵与对角矩阵相似。不会证。
+也即对称矩阵与对角矩阵相似。不会证。为什么A一定会有n个线性无关的特征向量？
 
 \section{实对称矩阵是半正定矩阵的充分必要条件是它的所有特征值都非负}
 由以上结论不难证明。\\
 正定矩阵定义：一个$ n \times n $的实对称矩阵A是正定的，当且仅当对于所有的非零实系数向量x，都有$ x^T A x > 0 $.
 
+\section{n阶方阵}
+\subsection{可对角化的条件}
+n阶方阵可对角化的充要条件是有n个线性无关的特征向量。
+如果n阶方阵有n个不同的特征值，则n可对角化，反之不一定对。考虑矩阵
+\begin{equation}
+M = 
+\begin{bmatrix}
+-1 & 3 & -1 \\
+-3 & 5 & -1 \\
+-3 & 3 & 1
+\end{bmatrix}
+\end{equation}
+M的特征值为(1,2,2), 重根2有两个线性无关的特征向量，(1,1,0)和(-1/3,0,1). 所以M有3个线性无关的的特征向量，可以对角化。所谓的代数重数和几何重数。
 
+\subsection{对角化的方法 - 特征值分解}
+假设n阶矩阵$ A $有特征根$\lambda_1,  \lambda_2, \cdots, \lambda_n$，以及n个线性无关的特征向量 $ q_1, q_2, \cdots, q_n $（列向量），易证明
+\[ 
+Q^{-1}AQ = \Lambda
+ \]
+其中
+\[ 
+\Lambda =
+\begin{bmatrix}
+\lambda_1 & & & \\
+& \lambda_2 & & \\
+& & \ddots & \\
+& & & \lambda_n
+\end{bmatrix}
+ \]
+\[ 
+Q = [q_1, q_2, \cdots, q_n]
+ \]
+证明如下
+\[ 
+\begin{aligned}
+AQ &= A[q_1, q_2, \cdots, q_n] \\
+   &= [Aq_1, Aq_2, \cdots, Aq_n] \\
+   &= [\lambda_1 q_1, \lambda_2 q_2, \cdots, \lambda_n q_n] \\
+   &= 
+   \begin{bmatrix}
+   \lambda_1 & & & \\
+   & \lambda_2 & & \\
+   & & \ddots & \\
+   & & & \lambda_n
+   \end{bmatrix}   
+   [q_1, q_2, \cdots, q_n] \\
+   &= \Lambda Q
+\end{aligned}
+ \]
+所以有
+\[ 
+A = Q\Lambda Q^{-1}
+ \]
+\textbf{特征值分解可以用来求矩阵的逆。}可以看出
+\[ 
+A^{-1} = Q\Lambda^{-1}Q^{-1}
+ \]
+因为$ \Lambda $是对角矩阵，所以有
+\[ 
+\Lambda^{-1} =
+\begin{bmatrix}
+\lambda_1^{-1} & & & \\
+& \lambda_2^{-1} & & \\
+& & \ddots & \\
+& & & \lambda_n^{-1}
+\end{bmatrix}
+\]
+\textbf{当矩阵是对称方阵时}
+\[ 
+\begin{aligned}
+A &= A^T \\
+Q\Lambda Q^{-1} &= (Q\Lambda Q^{-1})^T \\
+                &= (Q^{-1})^T\Lambda^T Q^T \\
+                &= (Q^{-1})^T\Lambda Q^T
+\end{aligned}
+ \]
+于是有
+\[ 
+Q^{-1} = Q^T
+ \]
 
 \end{document}
