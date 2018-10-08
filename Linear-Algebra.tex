@@ -60,9 +60,110 @@ x_1^H x_2 &= 0
 由以上结论不难证明。\\
 正定矩阵定义：一个$ n \times n $的实对称矩阵A是正定的，当且仅当对于所有的非零实系数向量x，都有$ x^T A x > 0 $.
 
+\section{对称矩阵}
+\subsection{任意一个n阶方阵都可以表示成一个对称矩阵和一个反对称矩阵之和}
+\[ A = \frac{1}{2}((A+A^T)+(A-A^T)) \]
+
+\section{满秩}
+\subsection{n阶方阵A是满秩的当且仅当A可以表示为n阶初等矩阵的乘积}
+必要性：一个满秩的n阶方阵总可以经过若干次初等行变换和初等列变化化为标准型，故存在初等矩阵，使
+\[
+\begin{aligned}
+A &= P_1P_2\cdots P_s E Q_1 Q_2 \cdots Q_l \\
+  &= P_1P_2\cdots P_s Q_1 Q_2 \cdots Q_l
+\end{aligned}
+\]
+
+充分性：如果A可以表示为n阶初等矩阵的乘积，则
+\[
+\begin{aligned}
+	A &= P_1P_2\cdots P_s \\
+	  &= P_1P_2\cdots P_s E
+\end{aligned}
+\]
+其中E为n阶单位矩阵。因为初等变换不改变矩阵的秩，所以$ r(A) = r(E) = n $, 即A是满秩的。
+\section{对角矩阵}
+用一个m阶对角矩阵$ D_m $左乘一个$ m\times n $矩阵$ A = (a_{ij}) $, 所得结果相当于分别用$ d_1, d_2, \cdots, d_m $乘以$ A $的第$ 1,2,\cdots,m $行。
+
+用一个n阶对角矩阵右
+乘$ A $，所得结果相当于分别用$ d_1, d_2, \cdots, d_n $乘以$ A $的第$ 1,2,\cdots,n $列。
+
+\section{矩阵乘积的秩}
+\subsection{给定矩阵$ A_{m\times n}, B_{n\times s} $, 那么有$r(AB)\leq min\{r(A),r(B)\}$}
+设$ AB=C $, 则C的每个行向量都是B的行向量的线性组合，所以$ r(C)\leq r(B) $. 同理C的每个列向量都是A的列向量的线性组合，所以$ r(C)\leq r(A) $.
+\subsection{设A是一个$ m\times n $阶矩阵，P是一个m阶满秩方阵，Q是一个n阶满秩方阵，则$ r(PA)=r(AQ)=r(A)$, 即左乘或右乘满秩方阵后，矩阵的秩不变.}
+由上面的命题，不难证明。也可证明如下。
+P是满秩方阵，所以P可以表示成初等矩阵的乘积，而初等变化不改变矩阵的秩，所以
+\[ 
+r(PA) = r(P_1P_2\cdots P_sA) = r(A)
+ \]
+同理可证\[ r(AQ) = r(A) \]
+
+\section{矩阵乘积的行列式}
+\subsection{设$ P $是$ n $阶初等矩阵，A是任意n阶方阵，则$ det(PA)=det(P)det(A) $}
+\subsection{对任意n阶方阵$ A $，$ B $，有$ det(AB)=det(A)det(B) $}
+
+\section{可逆矩阵}
+\subsection{一个n阶方阵A可逆的充分必要条件是，A是满秩的。}
+证：
+
+(i)必要性：当A可逆时，存在B，使得$ AB=E $, 由于
+\[
+\begin{aligned}
+r(AB) &\leq min(r(A), r(B)) \\
+r(AB) &= r(E) = n 
+\end{aligned}
+\]
+所以$ r(A) = r(B) = n $.
+
+(ii)充分性：若A是满秩的，则A可以表示成初等矩阵的乘积，初等矩阵是可逆的，它们的乘积也是可逆的，故A是可逆的。
+
+\section{相似变换}
+当存在一个可逆矩阵P，使得
+\[ 
+B = P^{-1}AP
+ \]
+则称A和B为相似矩阵，P称为相似变换矩阵。
+
+相似矩阵A和B有许多相同的性质。
+\subsection{秩相等}
+P为可逆矩阵，所以P是满秩的，矩阵乘以满秩矩阵，不改秩数。
+\subsection{行列式值相等}
+\subsection{迹相等}
+\subsection{相同的特征多项式}
+\[ 
+\begin{aligned}
+det(B-\lambda I) &= det(P^{-1}AP - \lambda I) \\
+				 &= det(P^{-1}AP - \lambda P^{-1}IP) \\
+				 &=	det(P^{-1})det(AP - \lambda I)det(P) \\
+				 &= det(P^{-1}P)det(AP - \lambda I) \\
+				 &=	det(A - \lambda I)
+\end{aligned}
+ \]
+A和B有相同的特征多项式，所以有相同的根，即特征值。
+ 
+\subsection{特征值相同，特征向量一般不同}
+\[ 
+\begin{aligned}
+Ax &= \lambda x \\
+PBP^{-1}x &= \lambda x \\
+B(P^{-1}x) &= \lambda (P^{-1}x)
+\end{aligned}
+ \]
+$ A $的特征向量$ x $对应于$ B $的特征向量$ P^{-1}x $.
+
+因为A与B有许多相似的性质，因此在给定了A以后，如果能找到一个与之相似而形式又足够简单的矩阵B, 那么对A的研究就可以转化为对更为简单的B的研究，使计算简化许多。比如说如果A与一个对角矩阵相似，就说A是可对角化的。
+
 \section{n阶方阵}
+\subsection{可对角化的定义}
+如果n阶方阵A与一个对角矩阵$\Lambda$相似，就说A是可对角化的。
+\[ P^{-1}EP = A  \]
+
+注意，所有的矩阵都可以通过一系列的初等行变换和列变化，化为标准型，不要和可对角化混淆。
+\[ P_1 P_2\cdots P_s A Q_1 Q_2 \cdots Q_l = D \]
+
 \subsection{可对角化的条件}
-n阶方阵可对角化的充要条件是有n个线性无关的特征向量。
+n阶方阵可对角化的充要条件是有n个线性无关的特征向量。证明见下文。
 如果n阶方阵有n个不同的特征值，则n可对角化，反之不一定对。考虑矩阵
 \begin{equation}
 A = 
@@ -164,5 +265,7 @@ AA^T  &= U\Sigma^2 U^T
  \]
 这个链接写的很好：
 http://www.cnblogs.com/pinard/p/6251584.html
+
+
 
 \end{document}
