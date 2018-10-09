@@ -99,7 +99,46 @@ r(PA) = r(P_1P_2\cdots P_sA) = r(A)
  \]
 同理可证\[ r(AQ) = r(A) \]
 
-\section{矩阵乘积的行列式}
+\section{迹trace}
+一个$ n $阶方阵$ A $的迹，指的是$ A $的主对角线上的元素的和。
+\[
+tr(A)=\sum_{i=1}^n a_{ii}
+\]
+\subsection{$ tr(AB)=tr(BA) $}
+证明：
+\[ 
+\begin{aligned}
+tr(AB) &= \sum_{i=1}^n\sum_{k=1}^n a_{ik}b_{ki} \\
+	   &= \sum_{i=1}^n\sum_{k=1}^n b_{ki}a_{ik} \\
+	   &= \sum_{k=1}^n\sum_{i=1}^n b_{ki}a_{ik} \\
+	   &= tr(BA)
+\end{aligned}
+ \]
+
+\subsubsection{$ tr(ABC) = tr(BCA) = tr(CAB) $}
+
+\subsubsection{如果A,B,C是对称矩阵}
+$
+tr(ABC)=tr(ACB)=tr(BAC)=tr(BCA)=tr(CAB)=tr(CBA)
+$
+
+\subsection{$ tr(A^T)=tr(A) $}
+
+\subsection{$ \nabla_A tr(AB) = B^T $}
+证明：
+\[
+\begin{aligned}
+tr(AB) &= \sum_i \sum_j a_{ij} b_{ji} \\
+\frac{\partial tr(AB)}{\partial a_{ij}} &= \frac{\partial \sum_i \sum_j a_{ij} b_{ji}}{\partial a_{ij}} \\
+&= b_{ji}
+\end{aligned}
+ \]
+所以有
+\[ 
+\nabla_A tr(AB) = B^T
+ \]
+
+\section{矩阵的行列式}
 \subsection{设$ P $是$ n $阶初等矩阵，A是任意n阶方阵，则$ det(PA)=det(P)det(A) $}
 \subsection{对任意n阶方阵$ A $，$ B $，有$ det(AB)=det(A)det(B) $}
 
@@ -129,7 +168,12 @@ B = P^{-1}AP
 \subsection{秩相等}
 P为可逆矩阵，所以P是满秩的，矩阵乘以满秩矩阵，不改秩数。
 \subsection{行列式值相等}
+$
+det(B) = det(P^{-1}AP) = det(P^{-1})det(A)det(P) = det(P^{-1}P)det(A) = det(A)
+$
 \subsection{迹相等}
+$ tr(B)=tr(P^{-1}AP)=tr(PP^{-1}A)=tr(A) $.
+所以满秩矩阵的迹等于它的特征值的和。
 \subsection{相同的特征多项式}
 \[ 
 \begin{aligned}
